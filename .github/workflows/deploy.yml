@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     strategy:
       fail-fast: false
       matrix:
@@ -25,13 +28,14 @@ jobs:
           python -m pip install -r requirements-web.txt
       - name: Build website
         run: sphinx-build -b html ./ ./_build/html
-      - name: Install SSH Key
-        uses: shimataro/ssh-key-action@v2
+        run: touch ./_build/html/.nojekyll
+      # Upload the book's HTML as an artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }} 
-          known_hosts: unnecessary
-      - name: Adding Known Hosts
-        run: ssh-keyscan -p ${{ secrets.REMOTE_PORT }} -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
-      
-      - name: Deploy with rsync
-        run: rsync -avz _build/html/* ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }}:/var/www/distributed-python/
+          path: "_build/html"
+
+      # Deploy the book's HTML to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
