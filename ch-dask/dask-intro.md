@@ -1,27 +1,27 @@
-# Dask 简介
+# Introduction to Dask
 
-Dask 是一个面向 Python 的并行计算框架，可以将计算任务扩展到多核和集群上。它提供了两类 API：高层的 DataFrame 和 Array 模拟了 pandas 和 NumPy 的 API，开箱即用；底层的基于计算图的 API 可以与很多 Python 包相结合。基于这两种 API，Dask 已经形成了一些生态，以应对越来越大的数据量和各种各样数据科学任务。
+Dask is a parallel computing framework for Python that allows you to scale your computational tasks to multiple cores and clusters. It provides two types of APIs: high-level DataFrame and Array APIs that mimic the APIs of pandas and NumPy, and low-level task graph-based APIs that can be combined with many Python packages. With these two APIs, Dask has built an ecosystem to handle large datasets and various data science tasks.
 
-Dask 的核心思想是构建任务计算图（Task Graph），将一个大计算任务分解为任务（Task），每个任务调用那些单机的 Python 包（比如 pandas 和 NumPy）作为执行后端。
+The core idea of Dask is to build a task graph, which breaks down a large computational task into smaller tasks. Each task calls the Python packages (such as pandas and NumPy) as execution backends.
 
-{numref}`dask-overview` 展示了 Dask API 和 Task Graph 并最后调度到计算设备上的示意图。
+{numref}`dask-overview` shows a schematic diagram of the Dask APIs, task graph, and how it is finally scheduled on computing nodes.
 
 ```{figure} ../img/ch-dask/dask-overview.svg
 ---
 width: 800px
 name: dask-overview
 ---
-Dask 架构图
+Dask Architecture
 ```
 
-:::{note}
-Dask 是一个面向大数据的并行计算框架，但 Dask 官方给用户的建议是：如果数据可以放进单机内存，建议优先使用传统的单机的 Python 包。因为并不是所有的计算都很容易被并行化，有些任务甚至并行之后的性能反而下降。
+:::{note} 
+Dask is a parallel computing framework designed for big data. However, Dask Team recommends that if your data can fit into memory on a single machine, it is recommended to use traditional single-machine Python packages. This is because not all computations are easily parallelizable, and some tasks may even perform worse after parallelization. 
 :::
 
-安装 Dask 也很简单，使用 `pip` 或者 `conda` 安装所需要的包：
+Installing Dask is straightforward. You can use `pip` or `conda` to install the necessary packages:
 
-```bash
-pip instal dask[complete]
+```
+pip install dask[complete]
 ```
 
-安装好后，我们就可以将 Dask 运行在单机的多个核心上。本书先从单机场景开始，多机场景只需修改一下调度器（Scheduler）即可。
+Once installed, you can run Dask on multiple cores of a single machine. This book will start with single-machine scenarios, and for multi-machine scenarios, you only need to modify the scheduler.

@@ -14,16 +14,16 @@ subtrees:
     - file: ch-data-science/data-science-lifecycle
     - file: ch-data-science/machine-learning
     - file: ch-data-science/python-ecosystem
-  # - file: ch-dask/index
-  #   entries:
-  #   - file: ch-dask/dask-intro
-  #   - file: ch-dask/dask-dataframe-intro
-  #   - file: ch-dask/dask-distributed
-  #   - file: ch-dask/task-graph-partitioning
-  # - file: ch-dask-dataframe/index
-  #   entries:
-  #   - file: ch-dask-dataframe/dask-pandas
-  #   - file: ch-dask-dataframe/read-write
+  - file: ch-dask/index
+    entries:
+    - file: ch-dask/dask-intro
+    - file: ch-dask/dask-dataframe-intro
+    - file: ch-dask/dask-distributed
+    - file: ch-dask/task-graph-partitioning
+  - file: ch-dask-dataframe/index
+    entries:
+    - file: ch-dask-dataframe/dask-pandas
+    - file: ch-dask-dataframe/read-write
   # - file: ch-ray-core/index
   #   entries:
   #     - file: ch-ray-core/ray-intro

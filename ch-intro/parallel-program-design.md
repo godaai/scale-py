@@ -13,7 +13,7 @@ name: pcam-img
 PCAM method
 ```
 
-* Partitioning: Divide the entire problem into multiple sub-problems or sub-tasks, including both computation and data.
+* Partitioning: Divide the entire problem into multiple sub-problems or sub-tasks.
 * Communication: Define the communication between different sub-tasks, including data structures and communication algorithms.
 * Agglomeration: Considering the current hardware performance and programming difficulty, further integrate the above two steps to aggregate fine-grained tasks into more efficient tasks.
 * Mapping: Distribute the integrated tasks to multiple processors.
@@ -49,6 +49,6 @@ MapReduce mainly involves four stages:
 * Split: Divide the large data into many small data pieces, each of which can be computed on a single worker.
 * Map: Perform the Map operation on each small data piece. Map is a programming function, and the developer needs to define the Map function, which outputs a key-value pair. In the example of word count, each occurrence of a word is counted as 1, with the word as the key and 1 as the value. In other words, the output of Map should be (word, 1).
 * Shuffle: Group the same keys to the same worker. This stage involves data exchange. In the example of word count, the same words are sent to the same worker.
-* Reduce: Aggregate all the same keys. The developer needs to define the Reduce function. In the example of word count, after the Shuffle stage, the data has been grouped together, and now we just need to sum up all the word frequencies.
+* Reduce: Aggregate all the same keys. The developer needs to define the Reduce function. In the example of word count, after the Shuffle stage, the same keys have been grouped together, and now we just need to sum up all the word frequencies.
 
 The programming paradigm of MapReduce has deeply influenced open-source projects such as Apache Hadoop, Apache Spark, and Dask.

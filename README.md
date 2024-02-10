@@ -1,15 +1,15 @@
 # Distributed Programming with Python
 
-开源的、面向下一代人工智能应用的 Python 分布式编程书籍。
+Open Source, Pythonic, Distributed Programming Book for Next-Generation AI Applications
 
-## 内容介绍
+## Introduction
 
-Python 已经成为数据科学和人工智能引领性的编程语言，数据科学家常常使用 Python 完成一系列任务。本书主要针对 Python 无法高效并行所设计，重点以数据科学领域为应用场景。
+Python has become the de facto programming language for data science and artificial intelligence. Data scientists often using Python to perform a wide range of tasks. This book is primarily focused on addressing the limitations of Python parallelism, with a particular emphasis on applications in the field of data science.
 
-## 参与贡献
+## Contributing
 
-如果想参与贡献，请参考下面的两个文件。
+If you would like to contribute, please refer to the following two files.
 
-* [构建指南](./contribute/info.md) 页面详细介绍了本书是如何撰写的，包括如何克隆代码仓库，如何创建开发环境，如何部署到 GitHub Pages。 
+The [Build Guide](./contribute/build.md) provides detailed instructions on how this book is written, including cloning the code repository, setting up the development environment, and deploying to GitHub Pages.
 
-* [样式规范](./contribute/style.md) 页面详细介绍了文件命名方式，文字风格，代码规范，画图工具等。
+The [Style Guide](./contribute/style.md) provides detailed guidelines on file naming conventions, writing style, code conventions, diagramming tools, and more.

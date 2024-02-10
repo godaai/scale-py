@@ -5,7 +5,7 @@ CPUs, GPUs, NICs, etc., are all hardware concepts. At the software level, thread
 
 ## Processes and Threads
 
-CPUs, GPUs, NICs, etc., are managed by the operating system (OS). The operating system manages the hardware and provides services to users through various applications. The running software is called a process. For example, when browsing web pages using a browser on a personal laptop, the operating system creates a process for the browser; when writing text content using the Word text editing software, the operating system creates a Word process. The Activity Monitor on macOS (as shown in {numref}`mac-process`) and the Task Manager on Windows can display the currently running processes of the operating system and the resources, such as CPU and memory, occupied by each process.
+CPUs, GPUs, NICs, etc., are managed by the operating system (OS). The operating system manages the hardware and provides services to users through various software applications. A running software is called a process. For example, when browsing web pages using a browser on a personal laptop, the operating system creates a process for the browser; when writing text content using Microsoft Word, the operating system creates a Word process. The Activity Monitor on macOS (as shown in {numref}`mac-process`) and the Task Manager on Windows can display the currently running processes of the operating system and the resources, such as CPU and memory, occupied by each process.
 
 ```{figure} ../img/ch-intro/mac-process.png
 ---
@@ -14,6 +14,7 @@ name: mac-process
 ---
 The Activity Monitor on macOS
 ```
+
 The operating system manages the execution of all processes and allocates resources to them. Specifically, the operating system allocates main memory space to processes, and each process has its own address space, data stack, and so on.
 
 In most programming languages, a process contains multiple threads, as shown in {numref}`process-thread`. Each thread runs on a physical computing core, and multiple threads of a process can utilize multiple physical computing cores.
@@ -40,7 +41,7 @@ x = x * 2
 x = x - 1
 ```
 
-If these three operations are scheduled on three threads, the data `x` is shared by the three threads, and the execution order of the three threads will significantly affect the calculation results. {numref}`thread-safe` shows three different possible execution orders, and the calculation results of the three orders may be different. Different scheduling orders can lead to unexpected results in parallel computing, which is thread-unsafe.
+If these three operations are scheduled on three threads, the data `x` is shared by the three threads, and the execution order of the three threads will significantly affect the calculation results. {numref}`thread-safe` shows three different possible execution orders, and the calculation results of the three orders may be different. Different scheduling orders can lead to unexpected results, which is thread-unsafe.
 
 ```{figure} ../img/ch-intro/thread-safe.svg
 ---
