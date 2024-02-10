@@ -20,7 +20,7 @@ html_theme_options = {
     'repository_branch': 'main', 
     'extra_footer': '', 
     'home_page_in_toc': True, 
-    'announcement': "If you find this tutorial helpful, please star our <a href=\"https://github.com/godaai/distributed-python\">GitHub</a> repo!", 
+    'announcement': "If you find this tutorial helpful, please star our <a href=\"https://github.com/godaai/distributed-python-en\">GitHub</a> repo!", 
     'analytics': {'google_analytics_id': ''}, 
     'use_repository_button': True, 
     'use_edit_page_button': False, 
