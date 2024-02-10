@@ -1,6 +1,6 @@
-# 数据科学
+# Data Science
 
-Python 分布式编程主要服务于数据科学和人工智能等对高性能计算领域，本章主要介绍数据科学相关背景知识，如果相关基础较好，也可以直接跳过本章。
+Python distributed programming primarily serves fields such as data science and artificial intelligence. This chapter mainly introduces background knowledge related to data science. If you have a good understanding of the relevant fundamentals, you can also skip this chapter directly.
 
 ```{tableofcontents}
 ```

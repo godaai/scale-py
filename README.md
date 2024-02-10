@@ -1,4 +1,4 @@
-# Python 分布式编程
+# Distributed Programming with Python
 
 开源的、面向下一代人工智能应用的 Python 分布式编程书籍。
 

@@ -1,30 +1,30 @@
 (computer-architecture)=
-# 现代计算机体系结构
+# Modern Computer Architecture
 
-大数据与人工智能应用对算力要求极高，为应对飞速增长的算力需求，芯片与硬件厂商近年来重点发展多核、集群（Cluster）和异构计算（Heterogeneous Computing）。{numref}`computer-arch` 展示了现代计算机的体系结构。
+The increasing demand for computing power in big data and artificial intelligence applications has led chip and hardware manufacturers to focus on the development of multicore, cluster, and heterogeneous computing. {numref}`computer-arch` shows the architecture of modern computers.
 
 ```{figure} ../img/ch-intro/computer-arch.svg
 ---
 width: 600px
 name: computer-arch
 ---
-现代计算机体系结构示意图
+Modern Computer Architecture
 ```
 
-所谓多核指的是一台计算机上有多颗中央处理器（Central Processing Unit，CPU），每个 CPU 有多个计算核心（Core）。CPU 内部有自己的缓存，比如一级缓存（Level 1 Cache，L1 Cache）或二级缓存（Level 2 Cache，L2 Cache），CPU 外部有主存（Main Memory）。
+Multicore refers to a computer that has multiple Central Processing Units (CPUs), each with multiple computing cores. The CPU has its own cache, such as Level 1 Cache (L1 Cache) or Level 2 Cache (L2 Cache), and the main memory is located outside the CPU.
 
-所谓集群指多台计算机通过高速网络互联，每台计算机上都配置了网卡（Network Interface Card，NIC）。
+Cluster refers to multiple computers connected through a high-speed network, with each computer equipped with a Network Interface Card (NIC).
 
-近年来，以 GPU 为代表的异构计算异军突起，成为人工智能算力核心。异构计算指在 CPU 芯片微架构（Microarchitecture）基础上，引入图形处理器（Graphics Processing Units），现场可编程门阵列（Field Programmable Gate Array，FPGA）等另一套芯片微架构。其中，CPU 仍然负责传统的处理和调度，GPU 等设备被用来加速某些特定的任务，比如图形图像、人工智能、区块链等。
+In recent years, heterogeneous computing, represented by GPUs, has emerged as the core of artificial intelligence computing. Heterogeneous computing refers to microarchitectures other than CPUs, such as graphics processing units (GPUs), field-programmable gate arrays (FPGAs). In heterogeneous computing, CPUs are still responsible for traditional processing and scheduling, while devices such as GPUs are used to accelerate specific tasks such as graphics, image processing, artificial intelligence, and blockchain.
 
 ## CPU
 
-现代 CPU 通常有多个计算核心，比如，笔记本电脑和台式机最多可拥有十几个计算核心，数据中心服务器高达上百个核心。然而，如何让计算任务分布到多个核心上并不简单，需要程序员在编写软件时将计算任务合理地调度到不同核心上。
+Modern CPUs usually have multiple computing cores. For example, laptops and desktops can have up to a dozen cores, while data center servers can have hundreds of cores. However, distributing computing tasks to multiple cores is not simple and requires developers to schedule the tasks to different cores properly when programming.
 
-## 网卡
+## Network Interface Card
 
-单台计算机的计算能力有限，为搭建一个高速互联的集群，数据中心服务器之间通常配置了高速网络，比如 RoCE（RDMA over Converged Ethernet）或 InfiniBand。每台计算机上配有至少一块高速网卡，多台计算机之间通过光纤互联，以获得极低的延迟和极高的吞吐率。这样不同节点之间互相访问数据就像在单个节点上进行一样。
+The computing power of a single computer node is limited. To build a high-speed interconnected cluster, data center servers are usually equipped with high-speed networks such as RDMA over Converged Ethernet (RoCE) or InfiniBand. Each computer is equipped with at least one high-speed NIC, and multiple computers are interconnected by fiber optics to achieve low latency and high throughput. This allows data access between different nodes as if data are on a single node.
 
-## 异构计算
+## Heterogeneous Computing
 
-在异构计算的框架下，CPU 和主存通常被称为主机（Host），各类专用的加速器被称为设备（Device）。尽管异构计算是一个很宽泛的概念，但当前基于 GPU 的异构计算是主流，尤其是以英伟达为代表的 GPU 占据了大量市场份额，所以这里主要以 GPU 为例介绍异构计算。GPU 有区别于 CPU 的芯片微架构和编译软件栈。软件层面，英伟达的 GPU 提供了 CUDA（Compute Unified Device Architecture）编程接口，硬件层面，GPU 有很多个专用计算核心（CUDA Core）和 GPU 上的存储（GPU Memory）。通常，数据从主存到 GPU 存储之间搬运有一定时间成本。其他加速器与英伟达 GPU 整体结构也很相似。
+In heterogeneous computing, the CPUs and main memory are usually referred to as the host, while various specialized accelerators are referred to as devices. Although heterogeneous computing is a broad concept, GPU-based heterogeneous computing is currently mainstream, especially with NVIDIA GPUs dominating a significant market share. Therefore, this section mainly focuses on GPUs as an example of heterogeneous computing. Compared to CPUs, GPUs have different chip microarchitectures and software stacks. In terms of software, NVIDIA GPUs provide the CUDA (Compute Unified Device Architecture) programming interface, and in terms of hardware, GPUs have multiple specialized computing cores (CUDA Cores and Tensor Cores) and GPU memory. Typically, there is a time cost in moving data from main memory to GPU memory.

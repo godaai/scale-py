@@ -1,38 +1,38 @@
 (performance-metrics)=
-# 性能指标
+# Performance Metrics
 
-为了客观地评估并行计算程序的性能，需要有一些标准。FLOPS 和加速比是最通用的指标，对于特定的问题，比如人工智能和大数据，也有一些特定的评测基准。
+In order to objectively evaluate the performance of parallel programs, there need to be some standards. FLOPS and speedup ratio are the most common metrics, and there are also specific benchmarks for certain applications, such as artificial intelligence and big data applications.
 
 ## FLOPS
 
-传统的高性能计算经常使用 FLOPS（Floating Point OPerations per Second）来衡量软硬件的性能。
+Traditional high-performance computing often uses FLOPS (Floating Point Operations per Second) to measure the performance of software and hardware.
 
-:::{note}
-所谓浮点数，指的是计算机一定比特位数来表示小数。用更多的比特位数，数值越精确，精度越高，但计算的成本越高。业界已经形成了一些标准，电气电子工程师学会（Institute of Electrical and Electronics Engineers, IEEE）定义了 16 位浮点数（FP16）、32 位浮点数（FP32）和 64 位浮点数（FP64）在计算机中的表示方法。大部分科学计算任务需要 FP64，深度学习等任务只需要 FP32、FP16 甚至更低。严格意义上来讲，需要明确是 FP32 还是 FP64 精度下的 FLOPS。因为不同硬件所能提供的 FP32 和 FP64 算力有很大差异。
+:::{note} 
+Floating-point numbers refer to decimal numbers represented by a certain number of bits in a computer. The more bits used, the more accurate and precise the values, but the higher the computational cost. The Institute of Electrical and Electronics Engineers (IEEE) has defined the representation of 16-bit floating-point numbers (FP16), 32-bit floating-point numbers (FP32), and 64-bit floating-point numbers (FP64) in computers. Most scientific computing tasks require FP64, while tasks like deep learning only need FP32, FP16, or even lower precision. It is important to specify whether FLOPS is calculated using FP32 or FP64 precision, as different hardware can provide significantly different FP32 and FP64 computational capabilities. 
 :::
 
-FLOPS 指每秒钟能够完成多少次浮点计算。如果进行一个 $n$ 维向量加法：$a + b$，所需的浮点计算次数为 $n$。将浮点计算次数除以时间，就是 FLOPS。
+FLOPS refers to the number of floating-point operations that can be completed per second. For example, if performing an $n$-dimensional vector addition: $a + b$, the number of floating-point calculations required is $n$. Dividing the number of floating-point calculations by time gives the FLOPS.
 
-FLOPS 指标既依赖于硬件性能，也与软件和算法高度相关。{numref}`thread-process` 提到线程安全问题，{numref}`serial-parallel` 中有任务分发的过程，如果软件算法设计不够好，大量计算资源闲置，应用程序的 FLOPS 可能很低。
+The FLOPS metric depends on both hardware performance and software/algorithm design. As mentioned in {numref}`thread-process`, thread safety is a concern, and {numref}`serial-parallel` describes the task distribution process. If the software algorithm design is not optimal and a large amount of computational resources are idle, the FLOPS of the application may be low.
 
-## 加速比
+## Speedup Ratio
 
-理论上，并行程序应该比对应的串行程序更快，所用时间更短。执行时间的缩短可以用**加速比**来衡量：
+In theory, parallel programs should be faster and take less time than their corresponding serial programs. The reduction in execution time can be measured using the speedup ratio (SR):
 
-$$
-加速比 = \frac{t_s}{t_p}
-$$
-
-其中 $t_s$ 为串行程序执行时间，$t_p$ 为并行程序执行时间。
-
-在加速比指标基础上，还有一种衡量方法，叫做**效率**：
-
-$$
-效率 = \frac{加速比}{N} = \frac{t_s}{N \cdot {t_p}}
+$$ 
+SR = \frac{t_s}{t_p} 
 $$
 
-其中 $N$ 为并行程序所使用的计算核心的数目。当加速比为 $N$ 时，串行程序可以被线性拓展到多个计算核心上，可以说并行程序获得了*线性加速比*。
+where $t_s$ is the execution time of the serial program and $t_p$ is the execution time of the parallel program.
 
-线性加速比是最理想的情况，实际上很难达到。{numref}`serial-parallel` 中的示意图中可以看到，并行程序需要有 Scheduler 将不同的任务分发到多个 Worker 上，多个 Worker 之间还要通信。
+Based on the speedup ratio metric, there is another measure called efficiency (E):
 
-另外，在使用 GPU 时，计算效率指标的 $N$ 取值应该是多少也有一定争议。GPU 上的计算核心成千上万，我们很难在一个 GPU 计算核心上测试得到 $t_s$；GPU 与 CPU 是协同工作的，计算加速比或效率时，是否要把 CPU 考虑进来？
+$$ 
+E = \frac{SR}{N} = \frac{t_s}{N \cdot {t_p}} 
+$$
+
+where $N$ is the number of computational cores used by the parallel program. When the speedup ratio is $N$, the serial program can be linearly scaled to multiple computational cores, achieving linear speedup.
+
+Linear speedup is the most ideal case but is difficult to achieve in practice. As shown in {numref}`serial-parallel`, the diagram illustrates that parallel programs require a scheduler to distribute different tasks to multiple workers, and there is also communication between the workers.
+
+Additionally, when using GPUs, there is some controversy over the value of $N$ for the computation efficiency metric. GPUs have thousands of computational cores, making it difficult to obtain $t_s$ on a single GPU core. Since GPUs and CPUs work together, should the CPU time be considered when calculating the speedup ratio or efficiency?

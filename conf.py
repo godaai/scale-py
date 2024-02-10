@@ -13,21 +13,21 @@ html_logo = 'logo.svg'
 html_sourcelink_suffix = ''
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
-    'search_bar_text': '搜索...', 
+    'search_bar_text': 'Search...', 
     'launch_buttons': {'notebook_interface': 'classic', 'binderhub_url': '', 'jupyterhub_url': '', 'thebe': False, 'colab_url': ''}, 
     'path_to_docs': 'docs', 
-    'repository_url': 'https://github.com/godaai/distributed-python', 
+    'repository_url': 'https://github.com/godaai/distributed-python-en', 
     'repository_branch': 'main', 
     'extra_footer': '', 
     'home_page_in_toc': True, 
-    'announcement': "如果你觉得内容对你有帮助，请在 <a href=\"https://github.com/godaai/distributed-python\">GitHub</a> 上点个 star 吧！", 
+    'announcement': "If you find this tutorial helpful, please star our <a href=\"https://github.com/godaai/distributed-python\">GitHub</a> repo!", 
     'analytics': {'google_analytics_id': ''}, 
     'use_repository_button': True, 
     'use_edit_page_button': False, 
     'use_issues_button': False,
-    "toc_title": "本节目录",
+    "toc_title": "In this page",
 }
-html_title = 'Python 分布式编程'
+html_title = 'Distributed Programming with Python'
 latex_engine = 'pdflatex'
 myst_enable_extensions = ['colon_fence', 'dollarmath', 'linkify', 'substitution', 'tasklist']
 myst_url_schemes = ['mailto', 'http', 'https']
@@ -39,7 +39,6 @@ nb_execution_mode = 'off'
 nb_execution_timeout = 30
 nb_output_stderr = 'show'
 numfig = True
-numfig_format = {'figure': '图 %s', 'table': '表 %s', 'code-block': '代码片段 %s', 'section': '章节 %s'}
 pygments_style = 'sphinx'
 suppress_warnings = ['myst.domains']
 use_jupyterbook_latex = True

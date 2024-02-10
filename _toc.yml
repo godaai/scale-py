@@ -9,42 +9,42 @@ subtrees:
     - file: ch-intro/thread-process
     - file: ch-intro/parallel-program-design
     - file: ch-intro/performance-metrics
-  - file: ch-data-science/index
-    entries:
-    - file: ch-data-science/data-science-lifecycle
-    - file: ch-data-science/machine-learning
-    - file: ch-data-science/python-ecosystem
-  - file: ch-dask/index
-    entries:
-    - file: ch-dask/dask-intro
-    - file: ch-dask/dask-dataframe-intro
-    - file: ch-dask/dask-distributed
-    - file: ch-dask/task-graph-partitioning
-  - file: ch-dask-dataframe/index
-    entries:
-    - file: ch-dask-dataframe/dask-pandas
-    - file: ch-dask-dataframe/read-write
-  - file: ch-ray-core/index
-    entries:
-      - file: ch-ray-core/ray-intro
-      - file: ch-ray-core/remote-function
-      - file: ch-ray-core/remote-object
-      - file: ch-ray-core/remote-class
-      - file: ch-ray-core/ray-internal 
-  - file: ch-ray-data/index
-    entries:
-    - file: ch-ray-data/ray-data-intro
-    - file: ch-ray-data/data-load-inspect-save
-    - file: ch-ray-data/data-transform
-    - file: ch-ray-data/preprocessor
-  - file: ch-mpi/index
-    entries:
-    - file: ch-mpi/mpi-intro
-    - file: ch-mpi/mpi-hello-world
-    - file: ch-mpi/point-to-point
-    - file: ch-mpi/collective
-    - file: ch-mpi/remote-memory-access
-  - file: ch-mpi-large-model/index
-    entries:
-    - file: ch-mpi-large-model/nccl
+  # - file: ch-data-science/index
+  #   entries:
+  #   - file: ch-data-science/data-science-lifecycle
+  #   - file: ch-data-science/machine-learning
+  #   - file: ch-data-science/python-ecosystem
+  # - file: ch-dask/index
+  #   entries:
+  #   - file: ch-dask/dask-intro
+  #   - file: ch-dask/dask-dataframe-intro
+  #   - file: ch-dask/dask-distributed
+  #   - file: ch-dask/task-graph-partitioning
+  # - file: ch-dask-dataframe/index
+  #   entries:
+  #   - file: ch-dask-dataframe/dask-pandas
+  #   - file: ch-dask-dataframe/read-write
+  # - file: ch-ray-core/index
+  #   entries:
+  #     - file: ch-ray-core/ray-intro
+  #     - file: ch-ray-core/remote-function
+  #     - file: ch-ray-core/remote-object
+  #     - file: ch-ray-core/remote-class
+  #     - file: ch-ray-core/ray-internal 
+  # - file: ch-ray-data/index
+  #   entries:
+  #   - file: ch-ray-data/ray-data-intro
+  #   - file: ch-ray-data/data-load-inspect-save
+  #   - file: ch-ray-data/data-transform
+  #   - file: ch-ray-data/preprocessor
+  # - file: ch-mpi/index
+  #   entries:
+  #   - file: ch-mpi/mpi-intro
+  #   - file: ch-mpi/mpi-hello-world
+  #   - file: ch-mpi/point-to-point
+  #   - file: ch-mpi/collective
+  #   - file: ch-mpi/remote-memory-access
+  # - file: ch-mpi-large-model/index
+  #   entries:
+  #   - file: ch-mpi-large-model/nccl
   - file: ref
