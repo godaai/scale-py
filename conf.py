@@ -17,7 +17,21 @@ html_theme_options = {
     'launch_buttons': {'notebook_interface': 'classic', 'binderhub_url': '', 'jupyterhub_url': '', 'thebe': False, 'colab_url': ''}, 
     'path_to_docs': 'docs', 
     'repository_url': 'https://github.com/godaai/distributed-python-en', 
-    'repository_branch': 'main', 
+    'repository_branch': 'main',
+    'icon_links': [
+        {
+            "name": "中文版",
+            "url": "https://dp.godaai.org/",  # required
+            "icon": "fa fa-language",
+            "type": "fontawesome",
+        },
+        {
+            "name": "GitHub",
+            "url": "https://github.com/godaai/distributed-python-en",
+            "icon": "https://img.shields.io/github/stars/godaai/distributed-python-en?style=for-the-badge",
+            "type": "url",
+        },
+    ],
     'extra_footer': '', 
     'home_page_in_toc': True, 
     'announcement': "If you find this tutorial helpful, please star our <a href=\"https://github.com/godaai/distributed-python-en\">GitHub</a> repo!", 

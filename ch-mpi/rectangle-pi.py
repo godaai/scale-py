@@ -7,7 +7,7 @@ communicator = MPI.COMM_WORLD
 rank = communicator.Get_rank()  # 进程唯一的标识Rank
 process_nums = communicator.Get_size()
 """
-参数设置：
+Configuration:
 R=1
 N=64*1024*1024
 """
@@ -22,13 +22,13 @@ def cal_rect_area(process_no, step_size, rect_width):
 
     for i in range(step_size):
         x = rect_start + i * rect_width
-        # (x,y) 对应于第i个小矩形唯一在圆弧上的顶点
+        # (x,y) is the upper right point of the i-th rectangle
         # x^2+y^2=1 => y=sqrt(1-x^2)
         rect_length = math.pow(1 - x * x, 0.5)
         total_area += rect_width * rect_length
     return total_area
 
-# 在每个进程上执行计算
+# Calculating on each process
 total_area = cal_rect_area(rank, step_size, rect_width)
 
 if rank == 0:

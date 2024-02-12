@@ -22,7 +22,6 @@ subtrees:
     - file: ch-dask/task-graph-partitioning
   - file: ch-dask-dataframe/index
     entries:
-    - file: ch-dask-dataframe/dask-pandas
     - file: ch-dask-dataframe/read-write
   # - file: ch-ray-core/index
   #   entries:
@@ -37,13 +36,13 @@ subtrees:
   #   - file: ch-ray-data/data-load-inspect-save
   #   - file: ch-ray-data/data-transform
   #   - file: ch-ray-data/preprocessor
-  # - file: ch-mpi/index
-  #   entries:
-  #   - file: ch-mpi/mpi-intro
-  #   - file: ch-mpi/mpi-hello-world
-  #   - file: ch-mpi/point-to-point
-  #   - file: ch-mpi/collective
-  #   - file: ch-mpi/remote-memory-access
+  - file: ch-mpi/index
+    entries:
+    - file: ch-mpi/mpi-intro
+    - file: ch-mpi/mpi-hello-world
+    - file: ch-mpi/point-to-point
+    - file: ch-mpi/collective
+    - file: ch-mpi/remote-memory-access
   # - file: ch-mpi-large-model/index
   #   entries:
   #   - file: ch-mpi-large-model/nccl

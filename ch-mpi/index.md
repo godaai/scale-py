@@ -1,4 +1,4 @@
-# MPI
+# MPI for Python
 
 ```{tableofcontents}
 ```

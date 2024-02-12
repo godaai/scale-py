@@ -6,15 +6,15 @@ rank = comm.Get_rank()
 size = comm.Get_size()
 
 if rank < size - 1:
-    # Worker 进程
+    # Worker process
     np.random.seed(rank)
-    # 随机生成
+    # Generate random data
     data_count = np.random.randint(100)
     data = np.random.randint(100, size=data_count)
     comm.send(data, dest=size - 1)
     print(f"Worker: worker ID: {rank}; count: {len(data)}")
 else:
-    # Master 进程
+    # Master process
     for i in range(size - 1):
         status = MPI.Status()
         data = comm.recv(source=MPI.ANY_SOURCE, status=status)

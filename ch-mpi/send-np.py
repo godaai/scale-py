@@ -4,8 +4,8 @@ import numpy as np
 comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 
-# 明确告知 MPI 数据类型为 int
-# dtype='i', i 为 INT 的缩写
+# tell MPI data type is int
+# dtype='i', i is short for INT
 if rank == 0:
     data = np.arange(10, dtype='i')
     comm.Send([data, MPI.INT], dest=1)
@@ -15,7 +15,7 @@ elif rank == 1:
     comm.Recv([data, MPI.INT], source=0)
     print(f"Received: {data}, to rank: {rank}.")
 
-# MPI 自动发现数据类型
+# MPI detects data type
 if rank == 0:
     data = np.arange(10, dtype=np.float64)
     comm.Send(data, dest=1)

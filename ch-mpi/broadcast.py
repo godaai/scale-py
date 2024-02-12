@@ -7,12 +7,12 @@ comm.Barrier()
 
 N = 5
 if comm.rank == 0:
-    A = np.arange(N, dtype=np.float64)    # rank 0 初始化数据到变量 A
+    A = np.arange(N, dtype=np.float64)    # rank 0 initializes data into variable A
 else:
-    A = np.empty(N, dtype=np.float64)     # 其他节点的变量 A 为空
+    A = np.empty(N, dtype=np.float64)     # As on other processes are empty
 
-# 广播
+# Broadcast
 comm.Bcast([A, MPI.DOUBLE])
 
-# 验证所有节点上的 A
-print("Rank: %d, data: %s" % (comm.rank, A))
+# Print to verify
+print("Rank:%2d, data:%s" % (comm.rank, A))
