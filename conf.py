@@ -14,8 +14,16 @@ html_sourcelink_suffix = ''
 html_theme = 'sphinx_book_theme'
 html_theme_options = {
     'search_bar_text': 'Search...', 
-    'launch_buttons': {'notebook_interface': 'classic', 'binderhub_url': '', 'jupyterhub_url': '', 'thebe': False, 'colab_url': ''}, 
+    'launch_buttons': {
+        'notebook_interface': 'classic', 
+        'binderhub_url': '', 
+        'jupyterhub_url': '', 
+        'thebe': False, 
+        'colab_url': 'https://colab.research.google.com'
+    }, 
     'path_to_docs': 'docs', 
+
+    'path_to_docs': './', 
     'repository_url': 'https://github.com/godaai/distributed-python-en', 
     'repository_branch': 'main',
     'icon_links': [
@@ -39,8 +47,10 @@ html_theme_options = {
     'use_repository_button': True, 
     'use_edit_page_button': False, 
     'use_issues_button': False,
-    "toc_title": "In this page",
+    "toc_title": "On this page",
 }
+html_static_path = ["_static"]
+html_css_files = ["custom.css"]
 html_title = 'Distributed Programming with Python'
 latex_engine = 'pdflatex'
 myst_enable_extensions = ['colon_fence', 'dollarmath', 'linkify', 'substitution', 'tasklist']

@@ -23,19 +23,19 @@ subtrees:
   - file: ch-dask-dataframe/index
     entries:
     - file: ch-dask-dataframe/read-write
-  # - file: ch-ray-core/index
-  #   entries:
-  #     - file: ch-ray-core/ray-intro
-  #     - file: ch-ray-core/remote-function
-  #     - file: ch-ray-core/remote-object
-  #     - file: ch-ray-core/remote-class
+  - file: ch-ray-core/index
+    entries:
+      - file: ch-ray-core/ray-intro
+      - file: ch-ray-core/remote-function
+      - file: ch-ray-core/remote-object
+      - file: ch-ray-core/remote-class
   #     - file: ch-ray-core/ray-internal 
-  # - file: ch-ray-data/index
-  #   entries:
-  #   - file: ch-ray-data/ray-data-intro
-  #   - file: ch-ray-data/data-load-inspect-save
-  #   - file: ch-ray-data/data-transform
-  #   - file: ch-ray-data/preprocessor
+  - file: ch-ray-data/index
+    entries:
+    - file: ch-ray-data/ray-data-intro
+    - file: ch-ray-data/data-load-inspect-save
+    - file: ch-ray-data/data-transform
+    - file: ch-ray-data/preprocessor
   - file: ch-mpi/index
     entries:
     - file: ch-mpi/mpi-intro

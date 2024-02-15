@@ -1,64 +1,64 @@
 (ray-data-intro)=
-# Ray Data 简介
+# Ray Data Overview
 
-Ray Data 是基于 Ray Core 的数据处理框架，主要解决机器学习模型训练或推理相关的数据准备与处理问题，即数据的最后一公里问题（Last-mile Preprocessing）。
+Ray Data is a data processing framework built on top of Ray Core, primarily addressing data preparation and processing tasks related to machine learning training or inference, or the "last mile" from storage to distributed applications.
 
-Ray Data 对数据提供了一个抽象的类，[`ray.data.Dataset`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.html)，在 `Dataset` 上提供了常见的大数据处理的原语，覆盖了数据处理的大部分阶段，例如：
+Ray Data provides an abstract class for data, [`ray.data.Dataset`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.html), offering common primitives for big data processing on the `Dataset`. It covers most stages of data processing, including:
 
-* 数据的读取，比如读取 Parquet 文件等。
-* 对数据的转换（Transformation）操作，比如 [`map_batches()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.map_batches.html)。
-* 分组聚合操作，比如 [`groupby()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.groupby.html)
-* 涉及数据在计算节点间的交换，比如 [`random_shuffle()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.random_shuffle.html) 和 [`repartition()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.repartition.htmln) 等。
+* Data loading, such as reading Parquet files.
+* Transformation operations on data, such as [`map_batches()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.map_batches.html).
+* Grouping and aggregation operations, such as [`groupby()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.groupby.html).
+* Data shuffling, such as [`random_shuffle()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.random_shuffle.html) and [`repartition()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.Dataset.repartition.html).
 
-## 关键概念
+## Key Concepts
 
-Ray Data 面向机器学习，其设计理念也与机器学习的流程高度一致。它主要包括了：
+Ray Data is tailored for machine learning, and its design philosophy aligns closely with the machine learning workflow. It mainly encompasses:
 
-* 数据读取与存储
-* 数据转换
-* 机器学习特征预处理
-* 数据集与机器学习模型的紧密结合
+* Data loading and storage
+* Data transformation
+* Machine learning feature preprocessing
+* Tight integration of datasets and machine learning models
 
 ## Dataset
 
-Ray Data 主要基于 `ray.data.Dataset` 对象。`Dataset` 是一个分布式的数据对象，`Dataset` 底层的基本单元是 `Block`。`Dataset` 是多个 `Block` 组成的分布式的 `ObjectRef[Block]`。 `Block` 是一个基于 Apache Arrow 格式的数据结构。 
+Ray Data is based on the `ray.data.Dataset` object. The `Dataset` is a distributed data object, with the basic unit being a `Block`. The `Dataset` is a distributed `ObjectRef[Block]` consisting of multiple `Block`s. A `Block` is a data structure based on the Apache Arrow format.
 
-{numref}`ray-dataset-arch` 是一个示意图，这个数据由 3 个 `Block` 组成，每个 `Block` 有 1,000 行数据。
+{numref}`ray-dataset-arch` is illustrative of a dataset composed of three `Block`s, each containing 1,000 rows of data.
 
 ```{figure} ../img/ch-ray-data/dataset-arch.svg
 ---
 width: 600px
 name: ray-dataset-arch
 ---
-Ray Dataset 底层架构示意图
+Ray Dataset
 ```
 
-我们可以使用 `from_*()` API 从其他系统或格式导入成 `Dataset`，比如 [`from_pandas()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.from_pandas.html) 、[`from_spark()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.from_spark.html)。或者使用 `read_*()` API 从持久化的文件系统重读取，比如 [`read_parquet()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.read_parquet.html)、[`read_json()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.read_json.html) 等。
+We can use `from_*()` APIs to import data from other systems or formats into a `Dataset`, such as [`from_pandas()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.from_pandas.html), [`from_spark()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.from_spark.html). We can use `read_*()` APIs to read data from persistent file systems, such as [`read_parquet()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.read_parquet.html), [`read_json()`](https://docs.ray.io/en/latest/data/api/doc/ray.data.read_json.html), and so on.
 
-## 数据操作与底层实现
+## Data Operations and Underlying Implementation
 
-### 数据读写
+### Data Reading and Writing
 
-如 {numref}`ray-dataset-read` 所示，Ray Data 使用 Ray Task 并行地读写数据，Ray Task 的思想很直观，每个 Task 读取一小部分数据，得到多个 `Block`，读取时可以设置 `parallelism`。
+As shown in {numref}`ray-dataset-read`, Ray Data utilizes Ray tasks to read and write data in parallel. The concept behind Ray tasks is straightforward—each task reads a small portion of data, yielding multiple `Block`s. The parallelism during reading can be adjusted by setting the `parallelism`.
 
 ```{figure} ../img/ch-ray-data/dataset-read.svg
 ---
 width: 600px
 name: ray-dataset-read
 ---
-数据读取原理示意图
+Illustration of Reading in Ray Data
 ```
 
-### 数据转换
+### Data Transformation
 
-如 {numref}`ray-dataset-map` 所示，数据转换操作底层使用 Ray Task 或 Ray Actor 对各个 `Block` 的数据进行操作。对于无状态的转换操作，底层实现主要使用 Ray Task；对于有状态的转换操作，底层实现主要使用 Ray Actor。
+As illustrated in {numref}`ray-dataset-map`, data transformation operations utilize Ray tasks or Ray actors to operate on each `Block`. For stateless transformation operations, the underlying implementation is Ray tasks, while for stateful transformation operations, Ray actors are used.
 
 ```{figure} ../img/ch-ray-data/dataset-map.svg
 ---
 width: 600px
 name: ray-dataset-map
 ---
-数据转换原理示意图
+Illustration of transformations in Ray Data
 ```
 
-接下来我们详细介绍几类数据操作及其原理。
+Next, we will delve into the details of several types of data operations.
