@@ -1,10 +1,10 @@
-# Distributed Programming with Python
+# Scale Python Data Science
 
-Open Source, Pythonic, Distributed Programming Book for Next-Generation AI Applications
+Open Source, Pythonic, Distributed Programming Book for Next-Generation Data Science and AI Applications
 
 ## Introduction
 
-Python has become the de facto programming language for data science and artificial intelligence. Data scientists often using Python to perform a wide range of tasks. This book is primarily focused on addressing the limitations of Python parallelism, with a particular emphasis on applications in the field of data science.
+Python has become the de facto programming language for data science and artificial intelligence. Data scientists often use Python to perform a wide range of tasks. This book is primarily focused on addressing the limitations of Python parallelism, with a particular emphasis on applications in the field of data science.
 
 ## Contributing
 

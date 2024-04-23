@@ -1,19 +1,21 @@
-# Distributed Programming with Python
+# Scale Python Data Science
 
 ::::{grid} 2
 :reverse:
 
 :::{grid-item}
-:columns: 4
+:columns: 3
 :class: sd-m-auto
 
 
 :::
 
 :::{grid-item}
-:columns: 8
+:columns: 9
 :class: sd-fs-3
-Open-source, Pythonic, Distributed Programming Book for Next-Generation AI Applications.
+Dask, Ray, Xorbits, mpi4py
+
+Open-source, Pythonic, Distributed Programming Book for Next-Generation Data Science and AI Applications.
 
 % The SVG rendering breaks latex builds for the GitHub badge, so only include in HTML
 ```{only} html
@@ -24,7 +26,7 @@ Open-source, Pythonic, Distributed Programming Book for Next-Generation AI Appli
 
 ::::
 
-::::{card-carousel} 3
+::::{card-carousel} 2
 
 :::{card}
 :margin: 3
@@ -48,7 +50,9 @@ Open-source, Pythonic, Distributed Programming Book for Next-Generation AI Appli
 :height: 100
 ```
 :::
+::::
 
+::::{card-carousel} 2
 
 :::{card}
 :margin: 3
@@ -61,6 +65,19 @@ Open-source, Pythonic, Distributed Programming Book for Next-Generation AI Appli
 :height: 100
 ```
 :::
+
+:::{card}
+:margin: 3
+:class-body: text-center
+:class-header: bg-light text-center
+
+**mpi4py**
+^^^
+```{image} ./img/mpi-logo.png
+:height: 100
+```
+:::
+
 ::::
 
 ## Contributors

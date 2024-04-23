@@ -3,12 +3,12 @@
 
 ## PCAM
 
-How to design software and algorithms so that programs can run in parallel on multiple cores or clusters? As early as 1995, Ian Foster proposed the PCAM method in his book {cite}`foster1995designing`, which can guide the design of parallel algorithms. PCAM mainly consists of four steps: Partitioning, Communication, Agglomeration, and Mapping; {numref}`pcam-img` illustrates these four steps.
+How to design software and algorithms so that programs can run in parallel on multiple cores or clusters? As early as 1995, Ian Foster proposed the PCAM method in his book {cite}`foster1995designing`, which can guide the design of parallel algorithms. PCAM mainly consists of four steps: Partitioning, Communication, Agglomeration, and Mapping; {numref}`fig-pcam` illustrates these four steps.
 
-```{figure} ../img/ch-intro/pcam.png
+```{figure} ../img/ch-intro/pcam.svg
 ---
-width: 400px
-name: pcam-img
+width: 600px
+name: fig-pcam
 ---
 PCAM method
 ```
@@ -36,7 +36,7 @@ The most difficult and crucial part of designing parallel programs is how to per
 
 Google proposed MapReduce in 2004 {cite}`dean2004MapReduce`, which is a typical parallel computing paradigm for big data. {numref}`map-reduce` illustrates the processing flow of using MapReduce for word count.
 
-```{figure} ../img/ch-intro/map-reduce.png
+```{figure} ../img/ch-intro/map-reduce.svg
 ---
 width: 600px
 name: map-reduce
