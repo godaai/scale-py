@@ -1,4 +1,4 @@
-# Introduction to Dask
+# Dask Overview
 
 Dask is a parallel computing framework for Python that allows you to scale your computational tasks to multiple cores and clusters. It provides two types of APIs: high-level DataFrame and Array APIs that mimic the APIs of pandas and NumPy, and low-level task graph-based APIs that can be combined with many Python packages. With these two APIs, Dask has built an ecosystem to handle large datasets and various data science tasks.
 

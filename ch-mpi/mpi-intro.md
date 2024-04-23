@@ -1,5 +1,5 @@
 (mpi-intro)=
-# Introduction to MPI
+# MPI Overview
 
 Message Passing Interface (MPI) is a classic parallel computing tool. Due to its age, it may be unfamiliar to new generations of programmers who often overlook its importance. However, with the advent of large neural models, MPI or communication libraries based on the MPI philosophy have regained attention. This is because large models necessitate parallel computing frameworks for multi-machine communication. For instance, the [DeepSpeed](https://github.com/microsoft/DeepSpeed) framework utilizes mpi4py for multi-node communication.
 
