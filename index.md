@@ -1,4 +1,4 @@
-# Scale Python Data Science
+# Scalable Data Science with Python
 
 ::::{grid} 2
 :reverse:
@@ -19,7 +19,7 @@ Open-source, Pythonic, Distributed Programming Book for Next-Generation Data Sci
 
 % The SVG rendering breaks latex builds for the GitHub badge, so only include in HTML
 ```{only} html
-[![](https://img.shields.io/github/stars/godaai/distributed-python-en?style=for-the-badge)](https://github.com/godaai/distributed-python-en)
+[![](https://img.shields.io/github/stars/godaai/scale-py?style=for-the-badge)](https://github.com/godaai/scale-py)
 ```
 
 :::

@@ -11,7 +11,7 @@ Please refer to the [Style Guide](style.md) for guidelines on the formatting and
 Refer to the [Git Tutorial](https://git-scm.com/book/en/v2/Distributed-Git-Contributing-to-a-Project) to create a Fork and clone the code repository to your local machine.
 
 ```bash
-git clone https://github.com/godaai/distributed-python-en.git
+git clone https://github.com/<username>/scale-py.git
 ```
 
 ## Environment Setup

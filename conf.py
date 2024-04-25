@@ -8,7 +8,7 @@ extensions = ['sphinx_togglebutton', 'sphinx_copybutton', 'myst_nb', 'jupyter_bo
 external_toc_exclude_missing = True
 external_toc_path = '_toc.yml'
 html_baseurl = ''
-html_favicon = ''
+html_favicon = "_static/logo.ico"
 html_logo = 'logo.svg'
 html_sourcelink_suffix = ''
 html_theme = 'sphinx_book_theme'
@@ -24,25 +24,25 @@ html_theme_options = {
     'path_to_docs': 'docs', 
 
     'path_to_docs': './', 
-    'repository_url': 'https://github.com/godaai/distributed-python-en', 
+    'repository_url': 'https://github.com/godaai/scale-py', 
     'repository_branch': 'main',
     'icon_links': [
         {
             "name": "中文版",
-            "url": "https://dp.godaai.org/",  # required
+            "url": "https://scale-py.godaai.org/",  # required
             "icon": "fa fa-language",
             "type": "fontawesome",
         },
         {
             "name": "GitHub",
-            "url": "https://github.com/godaai/distributed-python-en",
-            "icon": "https://img.shields.io/github/stars/godaai/distributed-python-en?style=for-the-badge",
+            "url": "https://github.com/godaai/scale-py",
+            "icon": "https://img.shields.io/github/stars/godaai/scale-py?style=for-the-badge",
             "type": "url",
         },
     ],
     'extra_footer': '', 
     'home_page_in_toc': True, 
-    'announcement': "If you find this tutorial helpful, please star our <a href=\"https://github.com/godaai/distributed-python-en\">GitHub</a> repo!", 
+    'announcement': "If you find this tutorial helpful, please star our <a href=\"https://github.com/godaai/scale-py\">GitHub</a> repo!", 
     'analytics': {'google_analytics_id': ''}, 
     'use_repository_button': True, 
     'use_edit_page_button': False, 
