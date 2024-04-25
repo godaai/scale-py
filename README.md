@@ -1,4 +1,4 @@
-# Scale Python Data Science
+# Scalable Data Science with Python
 
 Open Source, Pythonic, Distributed Programming Book for Next-Generation Data Science and AI Applications
 
