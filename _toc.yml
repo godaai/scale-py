@@ -21,10 +21,15 @@ subtrees:
     - file: ch-dask/dask-intro
     - file: ch-dask/dask-dataframe-intro
     - file: ch-dask/dask-distributed
+    - file: ch-dask/gpu
     - file: ch-dask/task-graph-partitioning
   - file: ch-dask-dataframe/index
     entries:
     - file: ch-dask-dataframe/read-write
+    - file: ch-dask-dataframe/indexing
+    - file: ch-dask-dataframe/map-partitions
+    - file: ch-dask-dataframe/shuffle
+    - file: ch-dask-dataframe/dask-case-study
   - file: ch-ray-core/index
     entries:
       - file: ch-ray-core/ray-intro

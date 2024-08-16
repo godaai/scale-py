@@ -1,7 +1,7 @@
 (sec-hyperparameter-optimization)=
 # Hyperparameter Optimization
 
-In Section {numref}sec-deep-learning-intro, we mention the concepts of model parameters and hyperparameters. Hyperparameters refer to parameters that lie outside the model parameters, such as the learning rate that controls the speed of gradient descent during the training of deep learning models, or the number of branches in a decision tree. Hyperparameters typically fall into two categories:
+In {numref}`sec-deep-learning-intro`, we mention the concepts of model parameters and hyperparameters. Hyperparameters refer to parameters that lie outside the model parameters, such as the learning rate that controls the speed of gradient descent during the training of deep learning models, or the number of branches in a decision tree. Hyperparameters typically fall into two categories:
 
 * Model: The design of the neural network, such as the number of layers, the size of the convolutional kernels, and the number of branches in a decision tree.
 * Training and Algorithms: Learning rate, batch size, etc.
