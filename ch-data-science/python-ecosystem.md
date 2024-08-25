@@ -23,7 +23,7 @@ This book assumes that readers already have some understanding of data science a
 
 * "Python for Data Analysis" by Wes McKinney {cite}`mckinney2022python`, the founder of the pandas project, is an excellent introductory book on data science and an entry-level book for the pandas framework.
 * Professor Andrew Ng videos and lecture notes on machine learning.
-* "Dive into Deep Learning" by Aston Zhang, Mu Li, and others {cite}`zhang2019dive` covers common artificial intelligence algorithms and their applications from the principles to programming practices. It is the best practical book for beginners to deep learning.
+* "Dive into Deep Learning" by Aston Zhang, Mu Li, and others {cite}`zhang2023dive` covers common artificial intelligence algorithms and their applications from the principles to programming practices. It is the best practical book for beginners to deep learning.
 
 Dask, Ray, Xorbits, and mpi4py are extensions to the data science ecosystem, scaling single-machine tasks horizontally to clusters. These frameworks consist of many components. {numref}`tab-lifecycle-module` summarizes the data science lifecycle corresponding to the components of these frameworks.
 
