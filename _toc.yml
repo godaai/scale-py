@@ -30,6 +30,11 @@ subtrees:
     - file: ch-dask-dataframe/map-partitions
     - file: ch-dask-dataframe/shuffle
     - file: ch-dask-dataframe/dask-case-study
+  - file: ch-dask-ml/index
+    entries:
+    - file: ch-dask-ml/preprocessing
+    - file: ch-dask-ml/hyperparameter
+    - file: ch-dask-ml/distributed-training
   - file: ch-ray-core/index
     entries:
       - file: ch-ray-core/ray-intro
