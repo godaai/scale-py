@@ -102,6 +102,7 @@ Tech Lead of the Computing Center at Renmin University of China, Executive Membe
 Lorri Rao
 ^^^
 
-PhD from University of Southern California, working for AMD on ML training optimization.
+PhD from University of Southern California, working for AMD on ML training optimization. [LinkedIn](https://www.linkedin.com/in/lorri-rao-2a6760295/)
+
 :::
 ::::
