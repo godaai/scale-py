@@ -95,5 +95,13 @@ Weizheng Lu
 
 Tech Lead of the Computing Center at Renmin University of China, Executive Member of the China Computer Federation (CCF) High Performance Computing Professional Committee, focusing on big data and machine learning systems.
 :::
+:::{grid-item-card}
+:link-type: doc
+:class-header: bg-light
 
+Lorri Rao
+^^^
+
+PhD from University of Southern California, working for AMD on ML training optimization.
+:::
 ::::
