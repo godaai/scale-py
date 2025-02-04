@@ -59,6 +59,10 @@ subtrees:
     - file: ch-ray-ml/ray-train
     - file: ch-ray-ml/ray-tune
     - file: ch-ray-ml/ray-serve
+  - file: ch-xorbits/index
+    entries:
+    - file: ch-xorbits/xorbits
+    - file: ch-xorbits/xinference
   - file: ch-mpi/index
     entries:
     - file: ch-mpi/mpi-intro
