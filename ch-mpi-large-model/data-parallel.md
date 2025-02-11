@@ -1,6 +1,57 @@
-数据并行性是一种允许您通过在多个计算节点之间复制模型并在它们之间划分数据集来更快地训练模型。
+(sec-data-parallel)=
 
-首先对于一次顺序训练，其中我们有一个计算节点，该节点将我们的模型加载到内存中。在每次训练迭代期间，我们加载下一个小批量，并在缓存每层输出的同时对模型执行前向传递。然后，我们计算损失并运行向后传递，从而计算梯度。这个过程如下图所示，使用 MNIST 图像作为我们的示例输入数据。
-![[数据并行图1.png]]
-在数据并行（DataParallel）中，需要再N台机器上赋值模型，我们分割我们的数据为N个块，并且让每台机器处理一个块。![[数据并行图2.png]]对于整个过程，首先在初始对于两个计算节点，需要将模型参数scatter到进程组中的其他进程，之后对于每个计算节点，一旦计算出梯度，都需要进行MPI.AllReduce,收集全部的信息来更新参数。
-![[数据并行图3.png]]
+# Data Parallelism
+
+Data parallelism is one of the most common methods of large model parallelism, and compared to other parallel methods, data parallelism is simpler and more intuitive to implement. As shown in {numref}`fig-data-parallel-img`, copies of the model are loaded onto different GPU devices, and the training data is split into multiple parts, each of which is independently trained by a different GPU. This programming model is known as Single Program Multiple Data (SPMD).
+
+```{figure} ../img/ch-mpi-large-model/data-parallel.svg
+---
+width: 500px
+name: fig-data-parallel-img
+---
+Data Parallelism Diagram
+```
+
+## Non-Parallel Training
+
+{numref}`sec-machine-learning-intro` introduces the process of training neural network models. We will first discuss the non-parallel scenario, using the MNIST handwritten digit recognition example for demonstration. As shown in {numref}`fig-data-parallel-single`, this example illustrates one forward pass and one backward pass.
+
+```{figure} ../img/ch-mpi-large-model/data-parallel-single.svg
+---
+width: 600px
+name: fig-data-parallel-single
+---
+Training a neural network on a single GPU
+```
+
+## Data Parallelism
+
+Data parallelism involves splitting the dataset into multiple parts and replicating the model weights on different GPUs. As shown in {numref}`fig-data-parallel-distributed`, suppose there are two GPUs, each with a copy of the model weights and a corresponding subset of the input data. On each GPU, the forward and backward propagation processes are carried out **independently**: forward propagation calculates the output values of each layer, while backward propagation computes the gradients of the model weights. These computations are independent and do not interfere with each other across different GPUs.
+
+```{figure} ../img/ch-mpi-large-model/data-parallel-distributed.svg
+---
+width: 600px
+name: fig-data-parallel-distributed
+---
+Training a neural network on two GPUs
+```
+
+At least during the forward and backward propagation stages, there is no communication cost. However, when it comes to updating the model weights, synchronization is necessary because the gradients obtained on each GPU are different. The gradients can be averaged to obtain the final gradient. Here, we only demonstrate $\boldsymbol{W}$, where $\boldsymbol{\frac{\partial L}{\partial W}}^{i}$ is the gradient on a single GPU, and $\boldsymbol{{\frac{\partial L}{\partial W}}^{sync}}$ is the synchronized average.
+
+$$
+\boldsymbol{
+    {\frac{\partial L}{\partial W}}^{sync} = \frac{1}{\# GPUs} \sum_{i=0}^{\# GPUs} {\frac{\partial L}{\partial W}}^{i}
+}
+$$
+
+To synchronize the gradients across different GPUs, you can use the `AllReduce` primitive provided by MPI. MPI's `AllReduce` collects the independently computed gradients from each GPU, averages them, and then broadcasts the averaged gradient back to each GPU.
+
+As shown in {numref}`fig-data-parallel-all-reduce`, during the gradient synchronization stage, MPI's `AllReduce` primitive ensures the consistency of gradients across all GPUs.
+
+```{figure} ../img/ch-mpi-large-model/data-parallel-all-reduce.svg
+---
+width: 600px
+name: fig-data-parallel-all-reduce
+---
+When updating model weights, you need to use MPI's `AllReduce` primitive to synchronize the gradients across all GPUs.
+```
