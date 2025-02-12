@@ -1,7 +1,4 @@
 (sec-pipeline-parallel)=
-
-流水线并行是另一种常见的大型模型并行方法。当模型大小没有超过单个 GPU 显存容量时，数据并行通过在每个 GPU 上复制一份模型权重，成为最简单易用的选项。然而，现代的模型已经变得如此庞大，以至于无法放入单块 GPU 中，例如拥有 175B 参数的 GPT-3。即使使用 FP16 格式存储，也需要 350GB 的存储空间，而单块 NVIDIA A100 或 H100 GPU 的显存仅为 80GB。流水线并行提供了解决这一问题的方案，它通过将大模型的不同层分配到不同的 GPU 上来实现。这一核心思想在 {numref}`fig-pipeline-parallel-img` 中有详细展示。
-
 # Pipeline Parallelism
 
 Pipeline parallelism is a common method for large model parallelism. When the model size does not exceed the memory capacity of a single GPU, data parallelism becomes the simplest and most convenient option, which involves replicating the model weights on each GPU. However, modern models have become so large that they cannot fit into a single GPU, such as GPT-3 with 175B parameters. Even using FP16 format storage, it requires 350GB of storage space, while a single NVIDIA A100 or H100 GPU has only 80GB of memory. Pipeline parallelism provides a solution to this problem by assigning different layers of the large model to different GPUs. This core idea is detailed in {numref}`fig-pipeline-parallel-img`.
